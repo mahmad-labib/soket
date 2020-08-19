@@ -1,0 +1,33 @@
+<div class="row">
+    <ul id="messages"></ul>
+    <div id="card-parent" class="col-md-4">
+
+    </div>
+</div>
+    <script>
+        const socket = io('http://localhost:3000');
+        socket.emit('testOrders');
+        const cardParent = document.getElementById('card-parent');
+        const card = (elemnt) => `
+            <div class="card" style="max-height: 250px; margin:10px;">
+                <div class="card-body">
+                    <h6 class="card-title">${elemnt.email}</h6>
+                    <h5 class="card-title">${elemnt.title}</h5>
+                </div>
+                <div class="card-body overflow-auto">
+                    <p class="card-text">
+                        <h6>Description: </h6>
+                        ${elemnt.description}
+                    </p>
+                </div>
+            </div>
+        `
+    
+        socket.on('testOrders', function (Data) {
+            var dataHtml = Data.map(element => card(element));
+            $('#card-parent').empty();
+            dataHtml.map((child)=> {$('#card-parent').append(child);})
+        });
+
+
+    </script>

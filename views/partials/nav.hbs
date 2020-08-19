@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark">
+  <ul class="nav">
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link active" href="viewOrders">View Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="createOrders">Create Orders</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link btn btn-danger" href="logout">Logout</a>
+    </li>
+    {{else}}
+    <li class="nav-item">
+      <a class="nav-link" href="login">login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="register">register</a>
+    </li>
+    {{/if}}
+  </ul>
+</nav>
